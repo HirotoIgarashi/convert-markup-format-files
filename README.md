@@ -1,6 +1,6 @@
 # Markdown形式のファイルをpdfに変換する
 
-## パソコンの環境
+## パソコンの環境を確認する
 
 OSのバージョンの確認
 
@@ -24,7 +24,7 @@ VIM - Vi IMproved 7.4 (2013 Aug 10, compiled Nov 24 2016 22:32:42)
 追加拡張パッチ: 8.0.0056
 ~~~
 
-## Markdown編集環境
+## Markdownの編集環境を設定する
 
 ### vimの設定
 
@@ -37,31 +37,39 @@ VOoM(Vim Outliner of Markups)はマークアップされたテキスト用のア
 VOoM-5.2.zipを解凍してできるVOoMディレクトリの下のautoload、doc、pluginを~/.vim/の下にコピーします。
 
 ### VOoMを使ってみる
+
 Markdown形式のファイルをvimで開いている状態で`:Voom markdown`とコマンドを入力します。他のコマンドには`:Voomhelp`、`:Voomexec`、`Voomlog`があるようですがまだ使ったことはありせん。VOoMはtwo-pane outlinerと説明されていますので左側に表示される部分をペインと呼ぶことにします。その左側のペインにはMarkdownで見出しとして記述されたものがツリーとして表示されています。
 
 左側のペインと右側のペインを移動するには<tab>キーを
 
 ### vim-markdownの設定
 
-## pandocでpdfに変換
+## pdfに変換するpandocの設定
+
+### pandocとは
+
+pandocのホームページは[Pandoc a universal document conver](http://pandoc.org)です。
+
+マークアップされたテキストを他の形式に変換するためのツールと理解しています。
+
+### LaTeXの環境をインストールする
+
+日本語を扱うためにLuaLaTexが必要。
+~~~
+sudo apt install texlive-lualatex texlive-lang-cjk lmodern texlive-xetex
+~~~
 
 ### pandocをインストールする
-Ubuntuでは
+[Pandoc a universal document conver](http://pandoc.org/installing.html)のダウンロードページからダウンロードします。
+Ubuntu用にdebファイルをダウンロードします。pandoc-1.19.2.1-1-amd64.debです。
+Require skylighting >= 0.1.1.4.
+インストールは
 ~~~
-sudo apt install pandoc
+sudo dpkg -i pandoc-1.19.2.1-1-amd64.deb
 ~~~
-でインストールします。実行結果は以下になります。
-~~~
-$ sudo apt install pandoc
-[省略]
-以下の追加パッケージがインストールされます:
-  libluajit-5.1-2 libluajit-5.1-common pandoc-data
-提案パッケージ:
-  texlive-latex-recommended texlive-xetex texlive-luatex pandoc-citeproc
-  texlive-latex-extra wkhtmltopdf
-以下のパッケージが新たにインストールされます:
-  libluajit-5.1-2 libluajit-5.1-common pandoc pandoc-data
-アップグレード: 0 個、新規インストール: 4 個、削除: 0 個、保留: 0 個。
-[省略]
-~~~
+でインストールします。
+
+## pandocでpdfに変換する
+
+### pandocの実行
 
