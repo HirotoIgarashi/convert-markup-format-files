@@ -59,11 +59,11 @@ Markdown形式のファイルをvimで開いている状態で`:Voom markdown`�
 
 pandocのホームページは[Pandoc a universal document conver](http://pandoc.org)です。
 
-マークアップされたテキストを他の形式に変換するためのツールと理解しています。
+マークアップされたテキストを他の形式に変換するためのツールです。
 
 ### LaTeXの環境をインストールする
 
-日本語を扱うためにLuaLaTexが必要になります。
+日本語を扱うためにはLuaLaTexが必要になります。インストールは下記のコマンドで行います。
 
 ~~~
 sudo apt install texlive-luatex texlive-lang-cjk lmodern texlive-xetex
@@ -72,15 +72,14 @@ sudo apt install texlive-luatex texlive-lang-cjk lmodern texlive-xetex
 ### pandocをインストールする
 [Pandoc a universal document conver](http://pandoc.org/installing.html)のダウンロードページからダウンロードします。
 Ubuntu用にdebファイルをダウンロードします。pandoc-1.19.2.1-1-amd64.debです。
-Require skylighting >= 0.1.1.4.
-インストールは
+インストールは以下のコマンドで行います。
 
 ~~~
 sudo dpkg -i pandoc-1.19.2.1-1-amd64.deb
 ~~~
-でインストールします。
 
 ## pandoc用にMarkdownを記述する
+Markdownはけた
 
 ### タイトルブロック
 pdfの先頭にタイトルをつけたい場合はファイルの先頭に%で始まるタイトルブロックを記述します。
