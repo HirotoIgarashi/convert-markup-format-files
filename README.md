@@ -1,9 +1,9 @@
-% Markdown形式のファイルをpdfに変換する
+% Markdown形式のファイルをPDFファイルに変換する
  pandoc
 % 五十嵐 浩人
 % 2017年3月5日
 
-# Markdown形式のファイルをpdfに変換する
+# Markdown形式のファイルをPDFファイルに変換する
 
 ## Markdownとは
 Markdownはジョン・グルーバーさんが作成しました。ジョン・グルーバーさんのサイト[DARING FIREBALL](http://daringfireball.net/projects/markdown/)が参考になります。  
@@ -11,7 +11,7 @@ Markdownはジョン・グルーバーさんが作成しました。ジョン・
 
 >Markdown（マークダウン）は、文書を記述するための軽量マークアップ言語のひとつである。本来はプレーンテキスト形式で手軽に書いた文書からHTMLを生成するために開発されたものである。しかし、現在ではHTMLのほかパワーポイント形式やLATEX形式のファイルへ変換するソフトウェア（コンバータ）も開発されている。各コンバータの開発者によって多様な拡張が施されるため、各種の方言が存在する。
 
-このドキュメントでは上記の各コンバータのうち、MarkdownをHTMLに変換してプレビューする[previm](https://github.com/kannokanno/previm)とMarkdownをpdfに変換する[pandoc](http://pandoc.org/)について記述します。
+このドキュメントでは上記の各コンバータのうち、MarkdownをHTMLに変換してプレビューする[previm](https://github.com/kannokanno/previm)とMarkdown形式をPDF形式に変換する[pandoc](http://pandoc.org/)について記述します。
 
 ## パソコンの環境を確認する
 
@@ -46,9 +46,9 @@ VIM - Vi IMproved 7.4 (2013 Aug 10, compiled Nov 24 2016 22:32:42)
 ### vimでMarkdownを編集するためのプラグイン
 vim用のプラグインを列挙します。
 
-* vim-markdown[Markdown Vim Mode](https://github.com/plasticboy/vim-markdown)
-* previm[Realtime preview Vim.](https://github.com/kannokanno/previm)
-* open-browser.vim[Open URI with your favorite browser from your most favorite editor](https://github.com/tyru/open-browser.vim)
+* vim-markdown [Markdown Vim Mode](https://github.com/plasticboy/vim-markdown)
+* previm [Realtime preview Vim.](https://github.com/kannokanno/previm)
+* open-browser.vim [Open URI with your favorite browser from your most favorite editor](https://github.com/tyru/open-browser.vim)
 
 ~/.vimrcファイルに以下を記入します。
 NeoBundleを使っているのが前提です。
@@ -108,7 +108,7 @@ sudo dpkg -i pandoc-1.19.2.1-1-amd64.deb
 ~~~
 
 ## Markdownの構文
-Markdownには各種の方言があります。このドキュメントではhtmlへの変換とpandocによるpdfへの変換がうまくいくMarkdownの構文に限定して説明します。
+Markdownには各種の方言があります。このドキュメントではhtmlへの変換とpandocによるPDF形式への変換がうまくいくMarkdownの構文に限定して説明します。
 
 ### 文字エンティティを使用する特殊文字
 &amp;と&lt;は文字エンティティで記述する必要があります。
@@ -139,18 +139,26 @@ Markdownには各種の方言があります。このドキュメントではhtm
 
 改行は改行する行末にスペースを2つ以上いれます。htmlに変換されると行末のスペース2つが&lt;br>に変換されるようになります。
 
+Markdown:
+
 ```
 スペースなし
 スペースなし
 ```
 
+ブラウザの出力:
+
 スペースなし
 スペースなし
+
+Markdown:
 
 ```
 スペースあり  
 スペースあり
 ```
+
+ブラウザの出力:
 
 スペースあり  
 スペースあり
@@ -170,15 +178,98 @@ Markdownには各種の方言があります。このドキュメントではhtm
 ### 引用
 先頭に>を記述します。下の例では1行目の行末にスペース2つをいれて改行しています。
 
+Markdown:
+
 ```
 >引用1行目  
 >引用2行目
 ```
+
+ブラウザの出力:
 
 >引用1行目  
 >引用2行目
 
 ### リスト
+箇条書きのリストは、アスタリスク、プラス、ハイフン（*、+、 - ）を先頭に記述します。
+
+Markdown:
+
+```
+* りんご
+* いちご
+* バナナ
+```
+
+ブラウザの出力:
+
+* りんご
+* いちご
+* バナナ
+
+Markdown:
+
+```
++ りんご
++ いちご
++ バナナ
+```
+
+ブラウザの出力:
+
++ りんご
++ いちご
++ バナナ
+
+Markdown:
+
+```
+- りんご
+- いちご
+- バナナ
+```
+
+ブラウザの出力:
+
+- りんご
+- いちご
+- バナナ
+
+番号付きのリストは、行の先頭に番号を記述し、その後にピリオドを続けます。
+
+Markdown:
+
+```
+1. りんご
+2. いちご
+3. バナナ
+```
+
+ブラウザの出力:
+
+1. りんご
+2. いちご
+3. バナナ
+
+リストの項目の間に空白行を置くと、&lt;p>タグに変換されます。空白行に続く段落を4つのスペースまたは1つのタブでインデントすることで、複数の段落があるリスト項目を作成できます。
+
+Markdown:
+
+```
+* リストの項目
+
+  複数の段落のリスト項目
+
+* リストの項目
+```
+
+ブラウザの出力:
+
+* リストの項目
+
+  複数の段落のリスト項目
+
+* リストの項目
 
 ### コードブロック
 複数行のコードは先頭にタブかスペースを4つ以上いれます。タブをスペース2つに設定している場合はタブを2ついれます。htmlに変換されると&lt;pre>タグに囲まれるようになります。
@@ -212,18 +303,26 @@ ___
 強調したいテキストを\*(アスタリスク)か\_(アンダーバー)で囲みます。htmlに変換されるときは\*か\_が1つの場合は&lt;em>、2つの場合は&lt;strong>で囲まれるようになります。
 &lt;em>タグのemはEmphasisの略でブラウザではイタリック体で表示されます。&lt;strong>タグはブラウザではボールド体で表示されます。pandocでpdfに変換したときはどちらもボールドで表示されます。
 
+Markdown:
+
 ```
 *強調 イタリックになっているはず*  
 _強調 イタリックになっているはず_
 ```
 
+ブラウザの出力:
+
 *強調 イタリックになっているはず*  
 _強調 イタリックになっているはず_
+
+Markdown:
 
 ```
 **強調 ボールドになっているはず**  
 __強調 ボールドになっているはず__
 ```
+
+ブラウザの出力:
 
 **強調 ボールドになっているはず**  
 __強調 ボールドになっているはず__
@@ -273,13 +372,17 @@ pandocでは4種類の表が使用できます。以下の4つです。
 
 パイプテーブルで試してみます。
 
+Markdown:
+
 ```
 |右寄せ | 左寄せ|デフォルト|中央寄せ|
 |------:|:------|----------|:------:|
-| 12   | 12   | 12       | 12     |
-| 123  | 123  | 123      | 123    |
-| 1    | 1    | 1        | 1      |
+| 12    | 12    | 12       | 12     |
+| 123   | 123   | 123      | 123    |
+| 1     | 1     | 1        | 1      |
 ```
+
+ブラウザの出力:
 
 |右寄せ | 左寄せ|デフォルト|中央寄せ|
 |------:|:------|----------|:------:|
