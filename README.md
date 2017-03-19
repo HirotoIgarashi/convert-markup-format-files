@@ -333,6 +333,30 @@ __強調 ボールドになっているはず__
 普通のテキスト。ここからコード`print("Hello Word")`。ここは普通のテキスト。
 
 ### イメージ
+イメージの構文はリンクと似ています。  
+HTML形式に変換されたときには"alt text"は&lt;img>タグのalt属性の値に設定されます。また、"Title"はtitle属性の値に設定されます。title属性の値はマウスオーバーしたときに表示される文字列です。  
+PDF形式に変換されたときにはPNGファイルの表示位置の下に図1: "alt text"と展開されます。"Title"は使われていないようです。  
+また改ページの近くにイメージが表示されるときは表示の順番が崩れる場合があるので注意する必要があります。
+
+```
+![alt text](path/to/img.jpg "Title")
+```
+
+Markdown:
+
+```
+![Hello World](helloworld.png "こんにちは")
+```
+
+ブラウザの出力:
+
+![Hello World](helloworld.png "こんにちは")
+
+
+HTML:
+```
+<img src="file://localhost/home/hiroto/git/md2pdf/helloworld.png" alt="Hello World" title="こんにちは">
+```
 
 ## その他
 
